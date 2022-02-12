@@ -86,6 +86,7 @@ public class MongoDBConnection {
         System.out.println("[DEBUG] MongoDBConnection.loadParks()");
 
         try {
+            System.out.println("LOAD PARKS()");
             return loadParks(resourceLoader.getResource(ResourceLoader.CLASSPATH_URL_PREFIX + FILENAME).getInputStream());
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,6 +99,8 @@ public class MongoDBConnection {
         System.out.println("[DEBUG] MongoDBConnection.loadParks(" + fileLocation + ")");
 
         try {
+            System.out.println("LOAD PARKS(" + fileLocation + ")");
+           
             return loadParks(new FileInputStream(new File(fileLocation)));
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,11 +115,13 @@ public class MongoDBConnection {
         List<Document> docs = new ArrayList<Document>();
         BufferedReader in = new BufferedReader(new InputStreamReader(is));
         try {
+            System.out.println("LOAD PARKS(inputstream)");
+           
             String currentLine = null;
             int i = 1;
             while ((currentLine = in.readLine()) != null) {
                 String s = currentLine.toString();
-                // System.out.println("line "+ i++ + ": " + s);
+                System.out.println("line "+ i++ + ": " + s);
                 Document doc = Document.parse(s);
                 docs.add(doc);
             }
